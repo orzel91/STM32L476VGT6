@@ -1,0 +1,9 @@
+device STM32L476VG
+si 1
+speed 4000
+r
+h
+erase
+loadbin /home/jarek/workspace/STM32L476VGT6/build/STM32L476VGT6.bin,0x08000000
+verifybin /home/jarek/workspace/STM32L476VGT6/build/STM32L476VGT6.bin,0x08000000
+q
