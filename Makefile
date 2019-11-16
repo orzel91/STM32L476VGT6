@@ -32,7 +32,7 @@ PROJECT = STM32L476VGT6
 CORE = cortex-m4
 
 # linker script
-LD_SCRIPT = linker.ld
+LD_SCRIPT = src/linker.ld
 
 # output folder (absolute or relative path, leave empty for in-tree compilation)
 OUT_DIR = build
@@ -105,7 +105,7 @@ CXX_STD = gnu++98
 
 # C language standard ("c89" / "iso9899:1990", "iso9899:199409",
 # "c99" / "iso9899:1999", "gnu89" - default, "gnu99")
-C_STD = gnu89
+C_STD = gnu99
 
 #=============================================================================#
 # set the VPATH according to SRCS_DIRS
@@ -301,6 +301,14 @@ ifneq ($(strip $(GENERATED)), )
 else
 	@echo 'Nothing to remove...'
 endif
+
+#=============================================================================#
+# make flash
+#=============================================================================#
+
+flash:
+	@echo 'Flashing MCU...'
+	JLinkExe -CommandFile jlink_cmd/download.jlink
 
 #=============================================================================#
 # global exports
