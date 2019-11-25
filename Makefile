@@ -51,7 +51,12 @@ AS_DEFS =
 
 # include directories (absolute or relative paths to additional folders with
 # headers, current folder is always included)
-INC_DIRS = src/inc
+INC_DIRS = src/inc \
+src/drivers/rcc \
+thirdparty/org/freertos_kernel/include \
+thirdparty/org/freertos_kernel/portable/GCC/ARM_CM4F \
+config
+
 
 # library directories (absolute or relative paths to additional folders with
 # libraries)
@@ -63,7 +68,12 @@ LIBS =
 
 # additional directories with source files (absolute or relative paths to
 # folders with source files, current folder is always included)
-SRCS_DIRS = src
+SRCS_DIRS = src \
+src/drivers/rcc \
+thirdparty/org/freertos_kernel \
+thirdparty/org/freertos_kernel/portable/GCC/ARM_CM4F \
+thirdparty/org/freertos_kernel/portable/GCC/MemMang \
+config
 
 # extension of C++ files
 CXX_EXT = cpp
