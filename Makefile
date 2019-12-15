@@ -53,6 +53,7 @@ AS_DEFS =
 # headers, current folder is always included)
 INC_DIRS = src/inc \
 src/drivers/rcc \
+src/drivers/gpio \
 thirdparty/org/freertos_kernel/include \
 thirdparty/org/freertos_kernel/portable/GCC/ARM_CM4F \
 config
@@ -70,9 +71,10 @@ LIBS =
 # folders with source files, current folder is always included)
 SRCS_DIRS = src \
 src/drivers/rcc \
+src/drivers/gpio \
 thirdparty/org/freertos_kernel \
 thirdparty/org/freertos_kernel/portable/GCC/ARM_CM4F \
-thirdparty/org/freertos_kernel/portable/GCC/MemMang \
+thirdparty/org/freertos_kernel/portable/MemMang \
 config
 
 # extension of C++ files
