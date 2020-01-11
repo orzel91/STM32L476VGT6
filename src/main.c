@@ -5,7 +5,6 @@
 #include "FreeRTOSConfig.h"
 #include "task.h"
 #include "printf.h"
-#include "uart.h"
 
 
 TaskHandle_t xTaskHandle1 = NULL;
