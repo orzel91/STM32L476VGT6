@@ -37,4 +37,20 @@
 #define LED_GREEN_MASK  P8     // mask of a LED pin
 
 
+/*
++=============================================================================+
+| UART2
++=============================================================================+
+*/
+
+#define UART_BAUDRATE   115200
+
+#define UART_TX_PORT    GPIOD  // GPIO port to which a LED is connected
+#define UART_TX_PIN     5      // pin number of a LED
+#define UART_TX_MASK    P5     // mask of a LED pin
+
+#define UART_RX_PORT    GPIOD  // GPIO port to which a LED is connected
+#define UART_RX_PIN     6      // pin number of a LED
+#define UART_RX_MASK    P6     // mask of a LED pin
+
 #endif /* CONFIG_CONFIG_H_ */

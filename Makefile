@@ -54,6 +54,7 @@ AS_DEFS =
 INC_DIRS = src/inc \
 src/drivers/rcc \
 src/drivers/gpio \
+src/drivers/uart \
 thirdparty/org/freertos_kernel/include \
 thirdparty/org/freertos_kernel/portable/GCC/ARM_CM4F \
 config
@@ -72,6 +73,7 @@ LIBS =
 SRCS_DIRS = src \
 src/drivers/rcc \
 src/drivers/gpio \
+src/drivers/uart \
 thirdparty/org/freertos_kernel \
 thirdparty/org/freertos_kernel/portable/GCC/ARM_CM4F \
 thirdparty/org/freertos_kernel/portable/MemMang \
