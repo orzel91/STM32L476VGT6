@@ -93,6 +93,8 @@
 #define INCLUDE_vTaskDelay                           1
 #define INCLUDE_uxTaskGetStackHighWaterMark          1
 #define INCLUDE_xTaskGetSchedulerState               1
+#define INCLUDE_xTaskGetIdleTaskHandle               1
+#define INCLUDE_pxTaskGetStackStart                  1
 
 /* Cortex-M specific definitions. */
 #ifdef __NVIC_PRIO_BITS
@@ -194,5 +196,7 @@ extern int iMainRand32( void );
 
 /* The platform FreeRTOS is running on. */
 #define configPLATFORM_NAME           "STM32L475"
+
+#include "SEGGER_SYSVIEW_FreeRTOS.h"
 
 #endif /* FREERTOS_CONFIG_H */

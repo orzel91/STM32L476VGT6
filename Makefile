@@ -55,9 +55,12 @@ INC_DIRS = src/inc \
 src/drivers/rcc \
 src/drivers/gpio \
 src/drivers/uart \
-thirdparty/org/freertos_kernel/include \
-thirdparty/org/freertos_kernel/portable/GCC/ARM_CM4F \
-config
+config \
+thirdparty/org/Source/include \
+thirdparty/org/Source/portable/GCC/ARM_CM4F \
+thirdparty/SEGGER/SEGGER \
+thirdparty/SEGGER/Config \
+thirdparty/SEGGER/OS \
 
 
 # library directories (absolute or relative paths to additional folders with
@@ -74,10 +77,14 @@ SRCS_DIRS = src \
 src/drivers/rcc \
 src/drivers/gpio \
 src/drivers/uart \
-thirdparty/org/freertos_kernel \
-thirdparty/org/freertos_kernel/portable/GCC/ARM_CM4F \
-thirdparty/org/freertos_kernel/portable/MemMang \
-config
+config \
+thirdparty/org/Source \
+thirdparty/org/Source/portable/GCC/ARM_CM4F \
+thirdparty/org/Source/portable/MemMang \
+thirdparty/SEGGER/SEGGER \
+thirdparty/SEGGER/Config \
+thirdparty/SEGGER/OS \
+
 
 # extension of C++ files
 CXX_EXT = cpp

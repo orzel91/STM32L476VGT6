@@ -1,9 +1,10 @@
 #include <stdint.h>
+
+#include "FreeRTOS.h"
+#include "task.h"
 #include "stm32l476xx.h"
 #include "config.h"
-#include "FreeRTOS.h"
 #include "FreeRTOSConfig.h"
-#include "task.h"
 #include "printf.h"
 
 
