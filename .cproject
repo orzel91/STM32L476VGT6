@@ -347,7 +347,7 @@
             			
             <storageModule moduleId="ilg.gnumcueclipse.managedbuild.packs">
                 				
-                <option id="cmsis.device.name" value="STM32L476ZG"/>
+                <option id="cmsis.device.name" value="STM32L476VG"/>
                 				
                 <option id="cmsis.subfamily.name" value="STM32L476"/>
                 				
@@ -362,20 +362,6 @@
                 <option id="cmsis.device.pack.name" value="STM32L4xx_DFP"/>
                 				
                 <option id="cmsis.device.pack.version" value="2.0.0"/>
-                				
-                <option id="cmsis.board.name" value="STM32L476G-EVAL"/>
-                				
-                <option id="cmsis.board.revision" value="Rev.A"/>
-                				
-                <option id="cmsis.board.vendor.name" value="STMicroelectronics"/>
-                				
-                <option id="cmsis.board.clock" value="8000000"/>
-                				
-                <option id="cmsis.board.pack.vendor" value="Keil"/>
-                				
-                <option id="cmsis.board.pack.name" value="STM32L4xx_DFP"/>
-                				
-                <option id="cmsis.board.pack.version" value="2.0.0"/>
                 				
                 <option id="cmsis.core.name" value="Cortex-M4"/>
                 				

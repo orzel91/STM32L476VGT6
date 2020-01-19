@@ -4,12 +4,11 @@
 #include "FreeRTOS.h"
 #include "FreeRTOSConfig.h"
 #include "task.h"
+#include "config.h"
 
 
-#define CPU_FREQ 80000000
 #define SYSTICK_FREQ 1000
 
-volatile uint32_t Sys_TickCount;
 
 void systemCoreClocInit(void)
 {
@@ -35,18 +34,4 @@ void systemCoreClocInit(void)
     RCC->CR &= ~RCC_CR_MSION;              // turn off MSI
 
     SysTick_Config(CPU_FREQ / SYSTICK_FREQ);
-}
-
-void SysTick_Handler(void)
-{
-    Sys_TickCount++;
-
-#if (INCLUDE_xTaskGetSchedulerState == 1 )
-  if (xTaskGetSchedulerState() != taskSCHEDULER_NOT_STARTED)
-  {
-#endif /* INCLUDE_xTaskGetSchedulerState */
-  xPortSysTickHandler();
-#if (INCLUDE_xTaskGetSchedulerState == 1 )
-  }
-#endif /* INCLUDE_xTaskGetSchedulerState */
 }

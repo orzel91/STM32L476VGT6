@@ -21,12 +21,18 @@ void vTask2Handler(void* params);
 int main(void)
 {
 
+    DWT->CTRL |= (1 << 0); // Enable CYCCNT in DWT_CTRL
+
     systemCoreClocInit();
     gpio_init();
     gpio_pinCfg(LED_RED_PORT, LED_RED_PIN, GPIO_OUT_PP_50MHz);
     gpio_pinCfg(LED_GREEN_PORT, LED_GREEN_PIN, GPIO_OUT_PP_50MHz);
 
     uart_init(UART_BAUDRATE);
+
+    SEGGER_SYSVIEW_Conf();
+    SEGGER_SYSVIEW_Start();
+
 
     xTaskCreate(vTask1Handler, "Task-1", configMINIMAL_STACK_SIZE, NULL, 2, &xTaskHandle1);
     xTaskCreate(vTask2Handler, "Task-2", configMINIMAL_STACK_SIZE, NULL, 2, &xTaskHandle2);
@@ -48,7 +54,7 @@ void vTask1Handler(void* params)
     {
         printf_("task1\n");
         gpio_toggle(LED_RED_PORT, LED_RED_MASK);
-        vTaskDelay(250);
+        vTaskDelay(50);
     }
 }
 
@@ -58,7 +64,7 @@ void vTask2Handler(void* params)
     {
         printf_("task2\n");
         gpio_toggle(LED_GREEN_PORT, LED_GREEN_MASK);
-        vTaskDelay(500);
+        vTaskDelay(200);
     }
 }
 
