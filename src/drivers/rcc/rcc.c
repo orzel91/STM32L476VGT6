@@ -32,6 +32,4 @@ void systemCoreClocInit(void)
     RCC->CFGR |= RCC_CFGR_SW_PLL;          // change SYSCLK to PLL
     RCC->CFGR |= RCC_CFGR_PPRE1_DIV1;      // HCLK not divided
     RCC->CR &= ~RCC_CR_MSION;              // turn off MSI
-
-    SysTick_Config(CPU_FREQ / SYSTICK_FREQ);
 }
