@@ -29,6 +29,7 @@
 #include "gpio.h"
 #include <stdint.h>
 #include "hdr_gpio.h"
+#include "config.h"
 
 
 /*
@@ -66,6 +67,17 @@ void gpio_init(void)
 	RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN | RCC_AHB2ENR_GPIOBEN | RCC_AHB2ENR_GPIOCEN |
 			RCC_AHB2ENR_GPIODEN | RCC_AHB2ENR_GPIOEEN | RCC_AHB2ENR_GPIOFEN |
 			RCC_AHB2ENR_GPIOGEN | RCC_AHB2ENR_GPIOHEN;	// enable all GPIOs
+
+	// Init LED
+    gpio_pinCfg(LED_RED_PORT, LED_RED_PIN, GPIO_OUT_PP_50MHz);
+    gpio_pinCfg(LED_GREEN_PORT, LED_GREEN_PIN, GPIO_OUT_PP_50MHz);
+
+    // Init Buttons
+    gpio_pinCfg(JOY_CENTER_PORT, JOY_CENTER_PIN, GPIO_IN_FLOATING);
+    gpio_pinCfg(JOY_LEFT_PORT, JOY_LEFT_PIN, GPIO_IN_FLOATING);
+    gpio_pinCfg(JOY_DOWN_PORT, JOY_DOWN_PIN, GPIO_IN_FLOATING);
+    gpio_pinCfg(JOY_RIGHT_PORT, JOY_RIGHT_PIN, GPIO_IN_FLOATING);
+    gpio_pinCfg(JOY_UP_PORT, JOY_UP_PIN, GPIO_IN_FLOATING);
 }
 
 void gpio_pinCfg(GPIO_TypeDef *port_ptr, uint32_t pin, uint32_t configuration)

@@ -39,6 +39,33 @@
 
 /*
 +=============================================================================+
+| Buttons
++=============================================================================+
+*/
+
+#define JOY_CENTER_PORT  GPIOA  // GPIO port to which a button is connected
+#define JOY_CENTER_PIN   0      // pin number of a button
+#define JOY_CENTER_MASK  P0     // mask of a button pin
+
+#define JOY_LEFT_PORT    GPIOA  // GPIO port to which a button is connected
+#define JOY_LEFT_PIN     1      // pin number of a button
+#define JOY_LEFT_MASK    P1     // mask of a button pin
+
+#define JOY_DOWN_PORT    GPIOA  // GPIO port to which a button is connected
+#define JOY_DOWN_PIN     5      // pin number of a button
+#define JOY_DOWN_MASK    P5     // mask of a button pin
+
+#define JOY_RIGHT_PORT   GPIOA  // GPIO port to which a button is connected
+#define JOY_RIGHT_PIN    2      // pin number of a button
+#define JOY_RIGHT_MASK   P2     // mask of a button pin
+
+#define JOY_UP_PORT      GPIOA  // GPIO port to which a button is connected
+#define JOY_UP_PIN       3      // pin number of a button
+#define JOY_UP_MASK      P3     // mask of a button pin
+
+
+/*
++=============================================================================+
 | UART2
 +=============================================================================+
 */
