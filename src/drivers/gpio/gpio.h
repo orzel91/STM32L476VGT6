@@ -500,9 +500,9 @@ typedef enum {
 
 void gpio_init(void);
 void gpio_pinCfg(GPIO_TypeDef *port_ptr, uint32_t pin, uint32_t configuration);
-void gpio_toggle(GPIO_TypeDef *port_ptr, gpioPin pin);
-void gpio_set(GPIO_TypeDef *port_ptr, gpioPin pin);
-void gpio_clr(GPIO_TypeDef *port_ptr, gpioPin pin);
+void gpio_toggle(GPIO_TypeDef *port_ptr, gpioPin mask);
+void gpio_set(GPIO_TypeDef *port_ptr, gpioPin mask);
+void gpio_set(GPIO_TypeDef *port_ptr, gpioPin mask);
 
 /******************************************************************************
 * END OF FILE

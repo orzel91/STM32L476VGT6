@@ -55,7 +55,7 @@
 | local functions' declarations
 +=============================================================================+
 */
-
+static void buttonInit(void);
 /*
 +=============================================================================+
 | global functions
@@ -72,12 +72,8 @@ void gpio_init(void)
     gpio_pinCfg(LED_RED_PORT, LED_RED_PIN, GPIO_OUT_PP_50MHz);
     gpio_pinCfg(LED_GREEN_PORT, LED_GREEN_PIN, GPIO_OUT_PP_50MHz);
 
-    // Init Buttons
-    gpio_pinCfg(JOY_CENTER_PORT, JOY_CENTER_PIN, GPIO_IN_FLOATING);
-    gpio_pinCfg(JOY_LEFT_PORT, JOY_LEFT_PIN, GPIO_IN_FLOATING);
-    gpio_pinCfg(JOY_DOWN_PORT, JOY_DOWN_PIN, GPIO_IN_FLOATING);
-    gpio_pinCfg(JOY_RIGHT_PORT, JOY_RIGHT_PIN, GPIO_IN_FLOATING);
-    gpio_pinCfg(JOY_UP_PORT, JOY_UP_PIN, GPIO_IN_FLOATING);
+    buttonInit();
+
 }
 
 void gpio_pinCfg(GPIO_TypeDef *port_ptr, uint32_t pin, uint32_t configuration)
@@ -118,23 +114,23 @@ void gpio_pinCfg(GPIO_TypeDef *port_ptr, uint32_t pin, uint32_t configuration)
     port_ptr->AFR[afrx] = afr;              // save back
 }
 
-void gpio_toggle(GPIO_TypeDef *port_ptr, gpioPin pin)
+void gpio_toggle(GPIO_TypeDef *port_ptr, gpioPin mask)
 {
-    if (port_ptr->ODR & pin) {
-        port_ptr->BRR |=  pin;
+    if (port_ptr->ODR & mask) {
+        port_ptr->BRR |=  mask;
     } else {
-        port_ptr->BSRR |=  pin;
+        port_ptr->BSRR |=  mask;
     }
 }
 
-void gpio_set(GPIO_TypeDef *port_ptr, gpioPin pin)
+void gpio_set(GPIO_TypeDef *port_ptr, gpioPin mask)
 {
-    port_ptr->BSRR |=  pin;
+    port_ptr->BSRR |=  mask;
 }
 
-void gpio_clr(GPIO_TypeDef *port_ptr, gpioPin pin)
+void gpio_clr(GPIO_TypeDef *port_ptr, gpioPin mask)
 {
-    port_ptr->BRR |=  pin;
+    port_ptr->BRR |=  mask;
 }
 
 /*
@@ -142,6 +138,16 @@ void gpio_clr(GPIO_TypeDef *port_ptr, gpioPin pin)
 | local functions
 +=============================================================================+
 */
+
+static void buttonInit(void)
+{
+    // Init Buttons
+    gpio_pinCfg(JOY_CENTER_PORT, JOY_CENTER_PIN, GPIO_IN_FLOATING);
+    gpio_pinCfg(JOY_LEFT_PORT, JOY_LEFT_PIN, GPIO_IN_PULL_DOWN);
+    gpio_pinCfg(JOY_DOWN_PORT, JOY_DOWN_PIN, GPIO_IN_PULL_DOWN);
+    gpio_pinCfg(JOY_RIGHT_PORT, JOY_RIGHT_PIN, GPIO_IN_PULL_DOWN);
+    gpio_pinCfg(JOY_UP_PORT, JOY_UP_PIN, GPIO_IN_PULL_DOWN);
+}
 
 /*
 +=============================================================================+
