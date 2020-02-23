@@ -99,7 +99,7 @@ bool uart_init(uint32_t baudrate)
     uart_periphInit(baudrate);
 
     // create command queue
-    cmdQueue = xQueueCreate(10, sizeof(AppCmds*));
+    cmdQueue = xQueueCreate(10, sizeof(AppCmds));
 
     // create write queue
     writeQueue = xQueueCreate(10, sizeof(char*));
@@ -185,21 +185,18 @@ static void vTask1MenuDisplay(void* params)
 static void vTask2CmdHandling(void* params)
 {
     UNUSED(params);
-    uint8_t cmdCode = 0;
-    AppCmds *newCmd = NULL;
+    AppCmds newCmd;
+
+    memset(&newCmd, 0, sizeof(newCmd));
 
     while(1)
     {
         // wait for notification, block
         xTaskNotifyWait(0, 0, NULL, portMAX_DELAY);
 
-        newCmd = (AppCmds*) pvPortMalloc(sizeof(AppCmds));
-
         taskENTER_CRITICAL();
-
-        cmdCode = getCmdCode(FIFO_Get(&rxData.fifo));
-        newCmd->cmdNr = cmdCode;
-        getArguments(newCmd->cmdArgs);
+        newCmd.cmdNr = getCmdCode(FIFO_Get(&rxData.fifo));
+        getArguments(newCmd.cmdArgs);
         taskEXIT_CRITICAL();
 
         // send cmd to cmdQueue
@@ -210,31 +207,32 @@ static void vTask2CmdHandling(void* params)
 static void vTask3CmdProcess(void* params)
 {
     UNUSED(params);
-    AppCmds *newCommand = NULL;
+    AppCmds newCommand;
+    memset(&newCommand, 0, sizeof(newCommand));
 
     while(1)
     {
         xQueueReceive(cmdQueue, (void*)&newCommand, portMAX_DELAY);
 
-        printf_("%d\n", newCommand->cmdNr);
+        printf_("%d\n", newCommand.cmdNr);
 
-        if (newCommand->cmdNr == LED_ON_CMD)
+        if (newCommand.cmdNr == LED_ON_CMD)
         {
             gpio_set(LED_GREEN_PORT, LED_GREEN_MASK);
         }
-        else if (newCommand->cmdNr == LED_OFF_CMD)
+        else if (newCommand.cmdNr == LED_OFF_CMD)
         {
             gpio_clr(LED_GREEN_PORT, LED_GREEN_MASK);
         }
-        else if (newCommand->cmdNr == LED_TOGGLE_CMD)
+        else if (newCommand.cmdNr == LED_TOGGLE_CMD)
         {
             ledToggleStart(pdMS_TO_TICKS(500));
         }
-        else if (newCommand->cmdNr == LED_TOGGLE_STOP_CMD)
+        else if (newCommand.cmdNr == LED_TOGGLE_STOP_CMD)
         {
             ledToggleStop();
         }
-        else if (newCommand->cmdNr == LED_STATUS)
+        else if (newCommand.cmdNr == LED_STATUS)
         {
             printf_("LED status: %d", gpio_check(LED_GREEN_PORT, LED_GREEN_MASK));
         }
@@ -242,8 +240,6 @@ static void vTask3CmdProcess(void* params)
         {
             printf_("Bad command number");
         }
-
-        vPortFree(newCommand);
 
     }
 }
