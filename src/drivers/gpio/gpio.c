@@ -133,12 +133,12 @@ void gpio_clr(GPIO_TypeDef *port_ptr, gpioPin mask)
     port_ptr->BRR |=  mask;
 }
 
-bool gpio_checkButton(GPIO_TypeDef *port_ptr, gpioPin mask)
+uint8_t gpio_check(GPIO_TypeDef *port_ptr, gpioPin mask)
 {
     if (port_ptr->IDR & mask) {
-        return true;
+        return 1;
     } else {
-        return false;
+        return 0;
     }
 }
 

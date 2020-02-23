@@ -504,7 +504,7 @@ void gpio_pinCfg(GPIO_TypeDef *port_ptr, uint32_t pin, uint32_t configuration);
 void gpio_toggle(GPIO_TypeDef *port_ptr, gpioPin mask);
 void gpio_set(GPIO_TypeDef *port_ptr, gpioPin mask);
 void gpio_clr(GPIO_TypeDef *port_ptr, gpioPin mask);
-bool gpio_checkButton(GPIO_TypeDef *port_ptr, gpioPin mask);
+uint8_t gpio_check(GPIO_TypeDef *port_ptr, gpioPin mask);
 
 
 /******************************************************************************
