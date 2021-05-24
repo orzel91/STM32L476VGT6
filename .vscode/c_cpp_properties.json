@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "arm-none-enabi-gcc",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/thirdparty/org/Source/portable/GCC/ARM_CM4F"
+            ],
+            "defines": [],
+            "compilerPath": "/opt/bleeding-edge-toolchain-200323/installNative/bin/arm-none-eabi-gcc",
+            "cStandard": "gnu99",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "${default}"
+        }
+    ],
+    "version": 4
+}
