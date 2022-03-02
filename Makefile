@@ -292,7 +292,7 @@ $(LSS) : $(ELF)
 # print the size of the objects and the .elf file
 #-----------------------------------------------------------------------------#
 
-print_size :
+print_size : $(LSS)
 	@echo 'Size of modules:'
 	$(SIZE) -B -t --common $(OBJS) $(USER_OBJS)
 	@echo ' '
